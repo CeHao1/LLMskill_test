@@ -1,0 +1,19 @@
+1. You are a point on a 2D plane. You current position is (x0, y0).
+You can move in the plane with the change of you position as (dx, dy). Then you new position will be (x0 + dx, y0 + dy).
+A controller "PI" inputs the current position (xk, yk) and outputs the change of position (dx, dy).
+So give a controller "PI", and the initial state (x0, y0), you can get a sequence of states (x1, y1), (x2, y2), ... (xn, yn).
+
+2. Then we can define some skills z1, z2, ..., zi, ... zn. The skills do not have semantic meaning, 
+they only represent the index "i" of each skill.
+Now the controller is conditioned on the skills. The inputs are (xk, yk) and zi, and the outputs are (dx, dy).
+When we choose different skills zi, we expect the resulting sequence of states (x1, y1), (x2, y2), ... (xn, yn) to be different.
+
+3. We should define a discriminator function D; and a representation function R. 
+The discriminator function D represents the mutual information between the skills zi and representation function R.
+The representation function R inputs the states of position (xk, yk, dxk, dyk) and outputs a representation value vector rk.
+
+4. We maximize the discriminator function D(z, r) = -log P(zi | rk) to make every skill as distinguishable as possible.
+Then how to define the representation function r=R(x, y, dx, dy)? r could be a vector.
+You should first analyze this questoin and show some examples of the representation function R.
+
+For examaple, the planer position can distinguish the states from every skill, so we can define (x, y) = R(x, y, dx, dy).
